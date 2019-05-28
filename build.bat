@@ -1,0 +1,1 @@
+docker build --tag=registry.payvison.com/jl.balirac/worstation .
