@@ -12,3 +12,5 @@ RUN echo "LC_ALL=EN_US.UTF8" >> /etc/envirotment && \
  locale-gen en_us.UTF-8
 
 WORKDIR /workspace
+
+COPY bash_profile /root/.bash_profile
