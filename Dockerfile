@@ -14,3 +14,5 @@ RUN echo "LC_ALL=EN_US.UTF8" >> /etc/envirotment && \
 WORKDIR /workspace
 
 COPY bash_profile /root/.bash_profile
+
+CMD /bin/bash -l
