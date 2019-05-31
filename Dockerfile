@@ -1,5 +1,7 @@
 ARG GOLANG_VERSION=1.12.5
 FROM debian:9.9
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
     git \
     locales \
