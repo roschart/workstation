@@ -17,8 +17,9 @@ RUN echo "LC_ALL=EN_US.UTF8" >> /etc/envirotment && \
 RUN wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz && rm go1.12.5.linux-amd64.tar.gz
 
+ENV TERM screen-256color
 WORKDIR /workspace
 
 COPY bash_profile /root/.bash_profile
 
-CMD /bin/bash -l
+CMD ["/bin/bash", "-l", "-c", "tmux"]
