@@ -1,8 +1,17 @@
 ARG GOLANG_VERSION=1.12.5
+
+# install vim plugins
+FROM ubuntu:18.10 as vim_plugins_builder
+RUN apt-get update && apt-get install -y git ca-certificates
+RUN mkdir -p /root/.vim/plugged && cd /root/.vim/plugged && \ 
+	git clone 'https://github.com/fatih/vim-go' && \
+	git clone 'https://github.com/scrooloose/nerdtree'
+
+#base
 FROM debian:9.9
 ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
+    curl \
     git \
     locales \
     neovim \
@@ -30,5 +39,16 @@ WORKDIR /workspace
 
 COPY bash_profile /root/.bash_profile
 COPY gitconfig /root/.gitconfig
+COPY vimrc /root/.vimrc
+
+
+# vim plugins
+RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+COPY --from=vim_plugins_builder /root/.vim/plugged /root/.vim/plugged
+
+# config nvim
+RUN mkdir /root/.config && \
+    ln -s /root/.vim /root/.config/nvim && \
+    ln -s /root/.vimrc ~/.config/nvim/init.vim
 
 ENTRYPOINT ["/bin/bash",  "-l", "-c", "tmux"]
