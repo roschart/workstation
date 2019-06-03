@@ -25,4 +25,4 @@ WORKDIR /workspace
 COPY bash_profile /root/.bash_profile
 COPY gitconfig /root/.gitconfig
 
-CMD ["/bin/bash", "-l", "-c", "tmux"]
+ENTRYPOINT ["/bin/bash",  "-l", "-c", "tmux"]
