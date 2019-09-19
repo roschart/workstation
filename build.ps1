@@ -1,1 +1,1 @@
-docker build --tag=registry.payvison.com/jl.balirac/worstation .
+docker build --tag=registry.payvision.com/jl.balirac/workstation .
