@@ -3,7 +3,7 @@
 This repository create a image of [code-server](https://github.com/cdr/code-server) with the plugins and things that I need in my normal day with visual code
 
 * [ ] Go
-* [ ] Node
+* [x] Node
 * [ ] Haskell
 * [ ] Markdown
 * [x] Haskell
@@ -16,6 +16,8 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 * Push : `docker push registry.payvision.com/jl.balirac/workstation`
 
 ## Run
-cmd-der: `docker run -it -p 127.0.0.1:8443:8443 -v "${PWD}:/home/coder/project" registry.payvision.com/jl.balirac/workstation --allow-http --no-auth`
+cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -v "${PWD}:/home/coder/project" registry.payvision.com/jl.balirac/workstation /home/coder/project --auth none`
 
 console: `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" registry.payvision.com/jl.balirac/workstation`
+
+
