@@ -12,12 +12,12 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 
 # How to use
 
-* Build : `docker build --tag=registry.payvision.com/jl.balirac/workstation .`
-* Push : `docker push registry.payvision.com/jl.balirac/workstation`
+* Build : `docker build --tag=roschart/workstation .`
+* Push : `docker push roschart/workstation`
 
 ## Run
-cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -v "${PWD}:/home/coder/project" registry.payvision.com/jl.balirac/workstation /home/coder/project --auth none`
+cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -v "${PWD}:/home/coder/project" roschart/workstation /home/coder/project --auth none`
 
-console: `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" registry.payvision.com/jl.balirac/workstation`
+console: `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" roschart/workstation`
 
 
