@@ -8,6 +8,7 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 * [ ] Markdown
 * [x] Haskell
 * [ ] Python
+* [x] Hugo
 
 
 # How to use
@@ -21,3 +22,7 @@ cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -v "${PWD}:/home/coder/project" 
 console: `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" roschart/workstation`
 
 
+### To use HUGO
+Open a terminal inside code-server and run 
+
+`hogo server -b 0.0.0.0` you can now go to your site in localhost:1313
