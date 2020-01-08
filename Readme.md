@@ -2,13 +2,12 @@
 
 This repository create a image of [code-server](https://github.com/cdr/code-server) with the plugins and things that I need in my normal day with visual code
 
+* [x] Git
 * [ ] Go
-* [x] Node
-* [ ] Haskell
-* [ ] Markdown
 * [x] Haskell
-* [ ] Python
 * [x] Hugo
+* [x] Node
+* [x] Python
 
 
 # How to use
