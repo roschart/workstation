@@ -4,6 +4,7 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 
 * [x] Git
 * [ ] Go
+* [ ] KubeCtl
 * [x] Haskell
 * [x] Hugo
 * [x] Node
@@ -16,7 +17,7 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 * Push : `docker push roschart/workstation`
 
 ## Run
-cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -v "${PWD}:/home/coder/project" roschart/workstation /home/coder/project --auth none`
+cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -p 1313:1313 -v "${PWD}:/home/coder/project" roschart/workstation /home/coder/project --auth none`
 
 console: `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" roschart/workstation`
 
