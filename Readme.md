@@ -17,9 +17,13 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 * Push : `docker push roschart/workstation`
 
 ## Run
+### Console
+`docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" roschart/workstation`
+or
+`docker-compose run bash`
+### cmd-der
 cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -p 1313:1313 -v "${PWD}:/home/coder/project" roschart/workstation /home/coder/project --auth none`
 
-console: `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" roschart/workstation`
 
 
 ### To use HUGO
