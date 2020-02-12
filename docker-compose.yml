@@ -1,9 +1,17 @@
 version: '3'
 services:
-  bash:
+  coder:
     build: .
-    entrypoint: /bin/bash
-    stdin_open: true
-    tty: true
+    entrypoint: 
+      - dumb-init
+      - code-server
+      - --host
+      - 0.0.0.0
+      - /workspace
+      - --auth 
+      - none
+    ports:
+      - "1313"
+      - "8080:8080"
     volumes:
-      - .:/data
+      - ..:/workspace

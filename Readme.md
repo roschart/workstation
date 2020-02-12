@@ -9,6 +9,7 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 * [x] Hugo
 * [x] Node
 * [x] Python
+* [ ] Rust
 
 
 # How to use
@@ -20,7 +21,7 @@ This repository create a image of [code-server](https://github.com/cdr/code-serv
 ### Console
 `docker run -it -v "${PWD}:/home/coder/project" --entrypoint "bash" roschart/workstation`
 or
-`docker-compose run bash`
+`docker-compose run --service-ports --entrypoint bash coder`
 ### cmd-der
 cmd-der: `docker run -it -p 127.0.0.1:8080:8080 -p 1313:1313 -v "${PWD}:/home/coder/project" roschart/workstation /home/coder/project --auth none`
 

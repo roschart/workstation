@@ -14,5 +14,8 @@ RUN curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '
     sudo dpkg -i hugo*
 # Install ansible
 RUN sudo -H pip install ansible
-    
+# Install Rust
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/home/coder/.cargo/bin:$PATH"
+WORKDIR /workspace
 
