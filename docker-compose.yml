@@ -1,17 +1,21 @@
-version: '3'
+version: "3.8"
 services:
-  coder:
+  bash:
     build: .
-    entrypoint: 
-      - dumb-init
-      - code-server
-      - --host
-      - 0.0.0.0
-      - /workspace
-      - --auth 
-      - none
+    # entrypoint: /bin/bash
+    container_name: workstation
+    hostname: workstation
+    stdin_open: true
+    tty: true
     ports:
-      - "1313"
-      - "8080:8080"
+      - "3000:3000"
+      - "9090:9090"
+      - "9229:9229"
     volumes:
-      - ..:/workspace
+      - Workspace:/root/Workspace
+      - ~\.ssh\id_rsa:/tmp/id_rsa
+    environment:
+    - DISPLAY=192.168.0.22:0.0
+volumes:
+  Workspace:
+    external: true
