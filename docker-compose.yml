@@ -1,7 +1,9 @@
 version: "3.8"
 services:
   bash:
-    build: .
+    build:
+     context: .
+     dockerfile: Dockerfile.alpine
     # entrypoint: /bin/bash
     container_name: workstation
     hostname: workstation
