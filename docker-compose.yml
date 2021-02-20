@@ -1,15 +1,15 @@
 version: "3.8"
 services:
-  bash:
+  fish:
     build:
      context: .
-     dockerfile: Dockerfile.alpine
-    # entrypoint: /bin/bash
+     dockerfile: Dockerfile
     container_name: workstation
     hostname: workstation
     stdin_open: true
     tty: true
     ports:
+      - "8000:8000" 
       - "3000:3000"
       - "9090:9090"
       - "9229:9229"

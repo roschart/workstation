@@ -18,10 +18,10 @@ if [ -f "$FILE" ]; then
   echo 'IdentityFile ~/.ssh/hyperion.priv' >> ~/.ssh/config
 fi
 
-# if no command the execute ash as default
+# if no command the execute fish as default
 if [ $# -eq 0 ]
   then
-    exec bash
+    exec fish
   else 
     exec $@
 fi
