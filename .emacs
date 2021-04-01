@@ -24,29 +24,31 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 
-(setq org-agenda-files "~/Workspace/org-roam")
+(setq org-agenda-files (list "~/Workspace/org-roam"))
+;; add file to a register C-x r j t to open
+(set-register ?t (cons 'file "~/~/Workspace/org-roam/20200610123926-index.org"))
 (setq fill-column 80)
 
 ;; config org-roam
 ;;(setq org-roam-directory "~/Workspace/org-roam")
 (require 'use-package)
-(use-package org-roam
-  :ensure t
-  :hook
-  (after-init . org-roam-mode)
-    :custom
-    (org-roam-directory  "~/Workspace/org-roam")
-    (org-roam-index-file "~/Workspace/org-roam/20200610123926-index.org")
-    (org-roam-graph-executable "C:\ProgramData\chocolatey\bin\dot.exe")
-    :init
-    (add-hook 'text-mode-hook 'turn-on-auto-fill)
-    :bind (:map org-roam-mode-map
-    (("C-c n l" . org-roam)
-    ("C-c n f" . org-roam-find-file)
-    ("C-c n g" . org-roam-show-graph)
-    ("C-c n n" . org-roam-jump-to-index))
-    :map org-mode-map
-    (("C-c n i" . org-roam-insert))))
+;; (use-package org-roam
+;;   :ensure t
+;;   :hook
+;;   (after-init . org-roam-mode)
+;;     :custom
+;;     (org-roam-directory  "~/Workspace/org-roam")
+;;     (org-roam-index-file "~/Workspace/org-roam/20200610123926-index.org")
+;;     (org-roam-graph-executable "C:\ProgramData\chocolatey\bin\dot.exe")
+;;     :init
+;;     (add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;     :bind (:map org-roam-mode-map
+;;     (("C-c n l" . org-roam)
+;;     ("C-c n f" . org-roam-find-file)
+;;     ("C-c n g" . org-roam-show-graph)
+;;     ("C-c n n" . org-roam-jump-to-index))
+;;     :map org-mode-map
+;;     (("C-c n i" . org-roam-insert))))
 
 (use-package org-download
   

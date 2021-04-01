@@ -8,7 +8,7 @@ RUN apk add --no-cache \
         busybox-extras \
 	ca-certificates \
 	curl \
-	emacs \
+	emacs-x11 \
 	fish \
 	git \
 	go \
