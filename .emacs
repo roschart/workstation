@@ -1,4 +1,3 @@
-
 (server-start)
 
 (require 'package)
@@ -25,8 +24,11 @@
 
 
 (setq org-agenda-files (list "~/Workspace/org-roam"))
+
 ;; add file to a register C-x r j t to open
-(set-register ?t (cons 'file "~/~/Workspace/org-roam/20200610123926-index.org"))
+(set-register ?i (cons 'file "~/Workspace/org-roam/20200610123926-index.org"))
+(set-register ?t (cons 'file "~/Workspace/org-roam/20200610130711-payvision_tasks.org"))
+
 (setq fill-column 80)
 
 ;; config org-roam
