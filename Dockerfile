@@ -6,7 +6,8 @@ RUN apk add --no-cache \
 	bash-completion \
 	bat \
         busybox-extras \
-	ca-certificates \
+        ca-certificates \
+        cargo \
 	curl \
 	emacs-x11 \
 	fish \
@@ -16,7 +17,8 @@ RUN apk add --no-cache \
 	nodejs \
 	openssh-client \
 	py3-pip \
-	python3 \
+        python3 \
+        rust \
 	sqlite \
 	texlive \
 	tmux \
