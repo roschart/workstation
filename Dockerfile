@@ -1,32 +1,38 @@
 # base OS
-FROM alpine
+FROM alpine:3.13
 ENV TZ="Europe/Madrid"
 RUN apk add --no-cache \
-	ansible \	
-	bash-completion \
-	bat \
-        busybox-extras \
-        ca-certificates \
-        cargo \
-	curl \
-	emacs-x11 \
-	fish \
-	git \
-	go \
-	htop \
-	nodejs \
-	openssh-client \
-	py3-pip \
-        python3 \
-        rust \
-	sqlite \
-	texlive \
-	tmux \
-	tree \
-	wget 
+    ansible \
+    bash-completion \
+    busybox-extras \
+    ca-certificates \
+    cargo \
+    curl \
+    emacs-x11 \
+    fish \
+    git \
+    go \
+    htop \
+    nodejs \
+    npm \
+    openssh-client \
+    py3-pip \
+    python3 \
+    rust \
+    sqlite \
+    texlive \
+    tmux \
+    tree \
+    wget 
+
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    bat
+
+RUN apk add  -X https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    leiningen
 
 # Packages needed by Hypieron ansible playbooks
-RUN pip install --upgrade pyvmomi
+RUN pip3 install --upgrade pyvmomi
 
 # Install gopls 
 RUN GO111MODULE=on go get golang.org/x/tools/gopls@latest
@@ -36,7 +42,7 @@ ENV PATH="${PATH}:/root/go/bin"
 # https://emacs.stackexchange.com/questions/34180/how-can-i-script-emacs-to-install-packages-from-list
 
 COPY .emacs /root/.emacs
-RUN emacs --script /root/.emacs
+#RUN emacs --script /root/.emacs
 
 # Config git
 RUN git config --global user.email "jl.balirac@payvision.com"
