@@ -14,6 +14,7 @@ RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
     git \
     htop \
     iputils-ping \
+    leiningen \
     less \
     openssh-client \
     python3-pyvmomi \
