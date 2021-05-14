@@ -3,31 +3,33 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ="Europe/Madrid"
 RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
-	ansible \	
-	bash-completion \
-	build-essential \
-	ca-certificates \
-	curl \
-	emacs \	
-	git \
-	htop \
-	iputils-ping \
-	less \
-	openssh-client \
-	python3-pyvmomi \
-	sqlite3 \
-	sudo \
-	telnet \
-	tmux \
-	tree \
-	vim-gtk3 \
-	wget \
-	--no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/*
-
+    ansible \
+    bash-completion \
+    bat \
+    build-essential \
+    ca-certificates \
+    cargo \
+    curl \
+    emacs \
+    git \
+    htop \
+    iputils-ping \
+    less \
+    openssh-client \
+    python3-pyvmomi \
+    sqlite3 \
+    sudo \
+    telnet \
+    tmux \
+    tree \
+    vim-gtk3 \
+    wget \
+    zsh \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install golang
-RUN wget --no-check-certificate https://golang.org/dl/go1.15.2.linux-amd64.tar.gz -O /tmp/go.tar.gz \
+RUN wget --no-check-certificate https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O /tmp/go.tar.gz \
 	&& tar -C /usr/local -xzf /tmp/go.tar.gz
 ENV PATH="${PATH}:/usr/local/go/bin"
 ENV GO111MODULE=on
@@ -50,20 +52,28 @@ RUN /bin/bash -c 'echo "source <(kubectl completion bash)" >> /root/.bashrc'
 
 
 # Intall node
-
 RUN wget https://nodejs.org/dist/v15.6.0/node-v15.6.0-linux-x64.tar.xz -O /tmp/node.xz \
 	&& tar -C /usr/local/ -xavf /tmp/node.xz
 ENV PATH="${PATH}:/usr/local/node-v15.6.0-linux-x64/bin/"
 
-# Config git
+# Install Rust
+# Get Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
+# Install ohmyzsh
+RUN wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | sh
+
+# Config git
 RUN git config --global user.email "jl.balirac@payvision.com"
 RUN git config --global user.user  "jl.balirac"
 
 
 # Clone my org-roam
-RUN ssh-keyscan github.com | ssh-keygen -lf -
-## RUN git clone git@github.com:roschart/org-roam.git /root/Workspace/org-roam
+#RUN ssh-keyscan github.com | ssh-keygen -lf -
+#RUN git clone git@github.com:roschart/org-roam.git /root/Workspace/org-roam
+
+
 
 # Config entrypoint
 COPY entrypoint.sh /bin/entrypoint.sh

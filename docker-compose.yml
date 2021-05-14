@@ -1,9 +1,9 @@
 version: "3.8"
 services:
-  fish:
+  zsh:
     build:
      context: .
-     dockerfile: Dockerfile
+     dockerfile: Dockerfile.ubuntu
     container_name: workstation
     hostname: workstation
     stdin_open: true

@@ -21,7 +21,7 @@ fi
 # if no command the execute fish as default
 if [ $# -eq 0 ]
   then
-    exec fish
+    exec zsh
   else 
     exec $@
 fi
