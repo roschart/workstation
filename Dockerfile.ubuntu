@@ -12,6 +12,7 @@ RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
     curl \
     emacs \
     git \
+    gnupg \
     htop \
     iputils-ping \
     leiningen \
@@ -24,6 +25,7 @@ RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
     tmux \
     tree \
     vim-gtk3 \
+    unzip \
     wget \
     zsh \
     --no-install-recommends \
@@ -34,14 +36,15 @@ RUN wget --no-check-certificate https://golang.org/dl/go1.16.4.linux-amd64.tar.g
 	&& tar -C /usr/local -xzf /tmp/go.tar.gz
 ENV PATH="${PATH}:/usr/local/go/bin"
 ENV GO111MODULE=on
+RUN go get github.com/gopasspw/gopass
 RUN go get golang.org/x/tools/gopls@latest
 ENV PATH="${PATH}:/root/go/bin"
 
 # Config emacs
 # https://emacs.stackexchange.com/questions/34180/how-can-i-script-emacs-to-install-packages-from-list
 
-COPY .emacs /root/.emacs
-RUN emacs --script /root/.emacs
+#COPY .emacs /root/.emacs
+#RUN emacs --script /root/.emacs
 
 # Config kubectl
 RUN curl "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" --output /bin/kubectl
@@ -74,7 +77,8 @@ RUN git config --global user.user  "jl.balirac"
 #RUN ssh-keyscan github.com | ssh-keygen -lf -
 #RUN git clone git@github.com:roschart/org-roam.git /root/Workspace/org-roam
 
-
+# Install spacemacs
+RUN git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 # Config entrypoint
 COPY entrypoint.sh /bin/entrypoint.sh

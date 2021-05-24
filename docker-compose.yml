@@ -16,7 +16,8 @@ services:
     volumes:
       - Workspace:/root/Workspace
       - ~/.ssh/id_rsa:/tmp/id_rsa
-      - ./hyperion.priv:/tmp/hyperion.priv
+      - ./hyperion.priv.gpg:/tmp/hyperion.priv.gpg
+      - ./id_rsa_hyperion:/tmp/id_rsa_hyperion
     environment:
     - DISPLAY=192.168.1.132:0.0  
     #- DISPLAY=172.21.240.1:0.0
